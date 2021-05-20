@@ -1,0 +1,35 @@
+```{r}
+#Lab3
+#Task1. Функція add2(x,y),яка повертає суму двох чисел.
+add2<-function(x,y){
+  x+y
+}
+add2(2,3)
+```
+#Task2. Функція above(x,n),яка приймає вектор та число n,
+#та повертає всі елементи вектору, які більші n.По замовчуванню n=10.
+above=function(x,n=10){
+return(x[x>n])
+}
+above(c(-5,1,5,10,11,225),100)
+#Task3.Функція my_ifelse(x,exp,n), яка приймає вектор х,порівнює всі його 
+#елементи за допомогою exp з n,та повертає елементи вектору, які відповідають
+#умові expression.Наприклад, my_ifelse(x,">",0) повертає всі елементи х, які
+#більші 0. Exp може дорівнювати "<",">","<=",">=","==".
+#Якщо exp не співпадає з ні з одним із цих виразів, повертається вектор х
+my_ifelse <- function(x, exp, n) 
+{
+  indicator=c("<",">","<=",">=","==",)
+    if(!is.element(exp,indicator)){return(x)}
+    return(x[sapply(x,exp,n)])
+}
+my_ifelse(1:15,"<=",12)
+   
+#Task4.Функція columnmean(x,removeNA), яка розраховує середнє значення (mean) 
+#по кожному стовпцю матриці, або data frame. Логічний оператор removeNA вказує,
+#чи видалити NA значення. По замовчуванню він дорівнює True.
+columnmean <- function(x, removeNA = T) {
+    return(colMeans(x, na.rm = removeNA))
+}
+columnmean(matrix(c(5,20,NA,NA,5,6,NA,-2,7,NA), nrow = 2, ncol = 5), TRUE)
+
