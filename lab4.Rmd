@@ -1,0 +1,50 @@
+---
+title: "Lab4"
+output: html_document
+---
+```{r}
+mydata <- read.csv("D:/R for study/hw1_data.csv")
+```
+```{r}
+#1. Які назви стовпців файлу даних?
+a <- names(mydata)
+a
+```
+```{r}
+#2. Виведіть перші 6 строк фрейму даних.
+b <- head(mydata,6)
+b
+
+```
+```{r}
+#3. Скільки спостережень (строк) в дата фреймі?
+length(mydata[,1:1])
+#or
+nrow(mydata)
+```
+```{r}
+#4. Виведіть останні 10 строк дата фрейму.
+c <- tail(mydata,10)
+c
+```
+```{r}
+#5. Як багато значень «NA» в стовпці «Ozone»?
+length(mydata[mydata$Ozone=='NA',1])
+```
+```{r}
+#6. Яке середнє (mean) стовпця «Ozone». Виключити «NA» значення.
+mean(mydata$Ozone,na.rm = T)
+```
+```{r}
+#7. Виведіть частину набору даних (subset) зі значенням «Ozone» > 31 та «Temp» > 90. Яке середнє (mean) значень «Solar.R» в цьому наборі даних (subset)?
+mysubsetdata <-  subset(mydata, Ozone > 3.5 & Temp>90)
+mean(mysubsetdata$Solar.R)
+```
+```{r}
+#8. Яке середнє значення (mean) для «Temp» для червня («Month» дорівнює 6)?
+mean(subset(mydata,mydata$Month==6)$Temp)
+```
+```{r}
+#9. Яке максимальне значення «Ozone» для травня («Month» дорівнює 5)?
+max(subset(mydata,mydata$Month==5)$Ozone, na.rm = T)
+```
